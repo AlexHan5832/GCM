@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+Created on Fri May 21 14:15:00 2021
 
+@authors: ufukefe and kutalmisince
+@modified by Y Han
+"""
 import os
 import argparse
 from PIL import Image

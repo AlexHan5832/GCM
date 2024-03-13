@@ -102,7 +102,7 @@ python Datasets/eval_hpatches.py --algorithms COARSEVGG19_dstlR2D2_95, COARSEVGG
 - SWIN_TRANSFORMER
 - RESNEXT50
 - EFFICIENTNETV2
-- MOBILEV3
+- MOBILEV3  
 You can use different backbone using the text listed above in the yaml file.
 
 

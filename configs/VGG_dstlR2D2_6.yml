@@ -1,0 +1,11 @@
+#ratio_th : [-1.0, -1.0, -1.0, -1.0, -1.0]
+ratio_th : [1.0, 1.0, 1.0, 1.0, 1.0]
+fine_ratio : 0.6
+model : 'COARSEVGG19'
+fine_model : "R2D2"
+up_sample : [16, 1]
+enable_two_stage : True
+bidirectional : True
+device : "cpu"
+output_directory : None
+fine_weights_path : "models/trained/dstl_r2d2.pt"

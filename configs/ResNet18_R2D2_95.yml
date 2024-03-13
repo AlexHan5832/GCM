@@ -1,0 +1,10 @@
+ratio_th : [1.0, 1.0, 1.0, 1.0, 1.0]
+fine_ratio : 0.95
+model : 'ResNet18'
+fine_model : "R2D2"
+up_sample : [16, 1]
+enable_two_stage : True
+bidirectional : True
+device : "cpu"
+output_directory : None
+fine_weights_path : "models/off-the-shelf/R2D2/r2d2_WASF_N16.pt"

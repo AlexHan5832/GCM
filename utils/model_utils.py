@@ -43,8 +43,6 @@ def get_all_models():
         "RESNEXT50": get_resnext50,
         "EFFICIENTNETV2": get_EfficientNetV2,
         "MOBILEV3": get_MobileNet_V3_Large,
-        "RESNET18_R2D2": get_ResNet18_R2D2,
-        "MOBILE_R2D2": get_MbileNetV3Large_R2D2,
     }
     return func_map
 
@@ -73,34 +71,6 @@ def get_vgg19_bn(ratio_th, device, **kwargs):
     print('model is loaded.')
     return model
 
-
-def get_unet_encoder(ratio_th, device, **kwargs):
-    assert len(ratio_th) == 6, 'ratio_th must be a list of 6 elements'
-    from nets.unet.unet_model import UNet
-
-    print('loading UNet...')
-    model = UNet(n_channels=3, n_classes=2, reverse=False).to(device).eval()
-    # model_path = r"../models/DeepPruner-the-shelf/unet_carvana_scale0.5_epoch2.pth"
-    model_path = r"models\off-the-shelf\unet_carvana_scale0.5_epoch2.pth"
-    model.load_state_dict(torch.load(model_path, map_location=device))
-    print('UNet model is loaded.')
-    print("This method uses only the encoder part")
-    return model
-
-
-def get_unet(ratio_th, device, **kwargs):
-    assert len(ratio_th) == 5, 'ratio_th must be a list of 5 elements'
-    from nets.unet.unet_model import UNet
-
-    print('loading UNet...')
-    model = UNet(n_channels=3, n_classes=2, reverse=True).to(device).eval()
-    model_path = r"./models/off-the-shelf/unet_carvana_scale0.5_epoch2.pth"
-    model.load_state_dict(torch.load(model_path, map_location=device))
-    print('UNet model is loaded.')
-    return model
-
-
-###################
 
 def get_coarse_vgg19(ratio_th, device, **kwargs):
     print('loading CoarseVgg19...')
@@ -139,13 +109,7 @@ def get_resnet18(ratio_th, device, down_sample=16, **kwargs):
     return new_m
 
 
-
-
-
-
-
 def get_deeplabv3_resnet50backbone(ratio_th, device, **kwargs):
-
     print('loading deeplabv3 resnet50 backbone...')
     weights = models.segmentation.DeepLabV3_ResNet50_Weights.COCO_WITH_VOC_LABELS_V1
     model = models.segmentation.deeplabv3_resnet50(weights=weights).backbone.to(device).eval()
@@ -221,18 +185,18 @@ def get_psmnet_feature_extraction(ratio_th, device, **kwargs):
     return model
 
 
-def get_bgnet_feature_extraction(ratio_th, device, **kwargs):
-    from nets.BGNet.models.bgnet import BGNet
-    assert len(ratio_th) == 5, 'ratio_th must be a list of 5 elements'
-    print('loading BGNet feature extraction...')
-    model = BGNet()
-    load_path = r"models\off-the-shelf\BGNet\kitti_12_BGNet.pth"
-    state_dict = torch.load(load_path)
-    model.load_state_dict(state_dict)
-    model.eval()
-    model.to(device)
-    print('BGNet feature extraction model is loaded.')
-    return model
+# def get_bgnet_feature_extraction(ratio_th, device, **kwargs):
+#     from nets.BGNet.models.bgnet import BGNet
+#     assert len(ratio_th) == 5, 'ratio_th must be a list of 5 elements'
+#     print('loading BGNet feature extraction...')
+#     model = BGNet()
+#     load_path = r"models\off-the-shelf\BGNet\kitti_12_BGNet.pth"
+#     state_dict = torch.load(load_path)
+#     model.load_state_dict(state_dict)
+#     model.eval()
+#     model.to(device)
+#     print('BGNet feature extraction model is loaded.')
+#     return model
 
 
 def get_cre_stereo_feature_extraction(ratio_th, device, **kwargs):
@@ -277,8 +241,7 @@ def get_only_r2d2(ratio_th, device, **kwargs):
 
 
 def get_only_r2d2_student(ratio_th, device, **kwargs):
-    # path = r"D:\hy\Pycharm\IME\Algorithms\DFM\python\models\off-the-shelf\R2D2\r2d2_WASF_N16.pt"
-    path = r"D:\hy\Pycharm\IME\Algorithms\DFM\python\models\off-the-shelf\R2D2\dstl_r2d2.pt"
+    path = r"..\models\trained\dstl_r2d2.pt"
     checkpoint = torch.load(path)
     model = r2d2.Coarse_Student_Quad_L2Net_ConfCFS()
     print("\n>> loading net = " + "Student_Quad_L2Net_ConfCFS")
@@ -356,7 +319,7 @@ def get_r2d2(device, **kwargs):
     if "weights" in kwargs and kwargs["weights"] is not None:
         path = kwargs["weights"]
     else:
-        path = r"D:\hy\Pycharm\MtResearch\models\off-the-shelf\R2D2\r2d2_WASF_N16.pt"
+        path = r"..\models\off-the-shelf\R2D2\r2d2_WASF_N16.pt"
     print('###' * 30)
     print(f"path: {path}")
     model = r2d2.load_network(path).to(device).eval()
@@ -365,32 +328,9 @@ def get_r2d2(device, **kwargs):
 
 
 def get_SuperPoint(device, **kwargs):
-    # from matcher.lightglue import SuperPoint
     from nets.superpoint import SuperPoint
     print("load SuperPoint")
     model = SuperPoint(max_num_keypoints=2048).eval().to(device)
-    print('###' * 30)
-    return model
-
-
-#######
-def get_SuperPoint_ResNet18(ratio, device, **kwargs):
-    from nets.superpoint import SuperPoint_ResNet
-    print("load SuperPoint")
-    model = SuperPoint_ResNet(max_num_keypoints=2048, device=device).eval().to(device)
-    nb_of_weights = common.model_size(model)
-    print(f" ( Model size: {nb_of_weights / 1000:.0f}K parameters )")
-    print('###' * 30)
-    return model
-
-
-def get_SuperPoint_R2D2(ratio, device, **kwargs):
-    from nets.sp_r2d2 import SuperPoint_R2D2
-
-    print("load SuperPoint_R2D2")
-    model = SuperPoint_R2D2(max_num_keypoints=2048, device=device).eval().to(device)
-    nb_of_weights = common.model_size(model)
-    print(f" ( Model size: {nb_of_weights / 1000:.0f}K parameters )")
     print('###' * 30)
     return model
 
@@ -405,38 +345,4 @@ def convert2namedtuple(outputs):
             OutputsAddCopy = namedtuple("OutputsAddCopy", outputs._fields + ("copy",))
             _ = tuple(outputs) + (outputs[-1],)
             outputs = OutputsAddCopy(*_)
-            # print(outputs[-1].shape)
-            # print(outputs[-2].shape)
     return outputs
-
-
-
-
-
-
-
-
-if __name__ == '__main__':
-
-    x = torch.rand(1, 3, 800, 1600).to("cpu")
-    # model = get_swin_transformer([1], "cuda:0")
-    # model = get_resnet18([1,2,3,4,5], "cuda:0")
-    # model = get_resnext50([1,2,3,4,5], "cuda:0")
-    model = get_deeplabv3_resnet50backbone([1, 2, 3, 4, 5], "cpu")
-    # model = get_EfficientNetV2([1,2,3,4,5], "cuda:0")
-    print(model)
-
-    count = 0
-    # for layer in model:
-    #     print(count, end="-->")
-    #     count += 1
-    #     x = layer(x)
-    #     # z = x.permute(0,3,1,2)
-    #     print(x.shape)
-
-    rs = model(x)
-    # print(rs.shape)
-    for key in rs.keys():
-        print(rs[key].shape)
-    # for e in rs:
-    #     print(e.shape)

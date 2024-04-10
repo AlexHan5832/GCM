@@ -32,8 +32,6 @@ if __name__ == '__main__':
 
     pairs_out = os.listdir(os.path.join(args.output_dir, 'original_outputs'))
 
-    pairs_out = os.listdir(os.path.join(args.output_dir, 'original_outputs'))
-
     with open(args.dataset_dir + '/' + 'image_pairs.txt') as f:
         for line in f:
             pairs = line.split(' ')

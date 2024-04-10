@@ -30,8 +30,8 @@ if __name__ == '__main__':
 
     args_util = parser.parse_args()
 
-    if not os.path.exists(args_util.output_dir):
-        os.makedirs(args_util.output_dir)
+    if not os.path.exists(os.path.join(args_util.output_dir, 'original_outputs')):
+        os.makedirs(os.path.join(args_util.output_dir, 'original_outputs'))
 
     with open(args_util.config, "rb") as f:
         cfg: dict = yaml.safe_load(f)

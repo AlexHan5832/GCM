@@ -20,8 +20,8 @@ if __name__ == '__main__':
 
     parser.add_argument('--algorithms', '--algorithms', nargs='+', required=True)
     parser.add_argument('--dataset_name', type=str, default="hpatches")
-    parser.add_argument('--result_directory', type=str, default=r".\Results")
-    parser.add_argument('--dataset_dir', type=str, default=r".\Datasets\hpatches")
+    parser.add_argument('--result_directory', type=str, default=r"./Results")
+    parser.add_argument('--dataset_dir', type=str, default=r"./Datasets/hpatches")
 
     args = parser.parse_args()
     algorithms = args.algorithms

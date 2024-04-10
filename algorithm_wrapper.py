@@ -26,11 +26,11 @@ if __name__ == '__main__':
 
     root_path = os.getcwd()
 
-    args.output_dir = root_path + args.output_dir
+    args.output_dir = os.path.join(root_path, args.output_dir)
 
-    args.dataset_dir = root_path + args.dataset_dir
+    args.dataset_dir = os.path.join(root_path, args.dataset_dir)
 
-    # args.alg_dir = root_path + args.alg_dir
+    pairs_out = os.listdir(os.path.join(args.output_dir, 'original_outputs'))
 
     pairs_out = os.listdir(os.path.join(args.output_dir, 'original_outputs'))
 

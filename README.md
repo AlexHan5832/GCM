@@ -7,7 +7,7 @@ Python (Pytorch) implementation of our [paper](https://arxiv.org/abs/2403.05388)
 This repository is created using Anaconda and requires Python 3.7+.
 ```bash
 conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia
-conda install tqdm pillow numpy matplotlib scipy opencv pyyaml ipykernel
+conda install tqdm pillow numpy matplotlib scipy opencv pyyaml pandas
 ```
 
 

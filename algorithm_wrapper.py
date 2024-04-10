@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
     # args.alg_dir = root_path + args.alg_dir
 
-    pairs_out = os.listdir(args.output_dir + '/' + 'original_outputs')
+    pairs_out = os.listdir(os.path.join(args.output_dir, 'original_outputs'))
 
     with open(args.dataset_dir + '/' + 'image_pairs.txt') as f:
         for line in f:

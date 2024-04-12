@@ -19,6 +19,24 @@ For your convenience, we provide a distilled patch descriptor in the `models/tra
 ### Prepare the data and off-the-shelf models
 #### Prepare the data
 Please follow the [IME](https://github.com/ufukefe/IME) using `hpatches_organizer.py` to organize your dataset.
+```bash
+cd Datasets
+
+wget -P Datasets http://icvl.ee.ic.ac.uk/vbalnt/hpatches/hpatches-sequences-release.tar.gz
+
+tar -xvzf hpatches-sequences-release.tar.gz &> /dev/null
+
+# Remove the high-resolution sequences
+cd hpatches-sequences-release
+rm -rf i_contruction i_crownnight i_dc i_pencils i_whitebuilding v_artisans v_astronautis v_talent
+cd ..
+
+python hpatches_organizer.py
+
+rm *.tar.gz
+rm -rf hpatches-sequences-release
+rm -rf hpatches_organizer.py
+```
 
 #### Prepare off-the-shelf models (optional)
 The off-the-shelf models used are listed below. **Note that these models are not required** if you only want to use the distilled patch descriptor along with the image classification or semantic segmentation models.  

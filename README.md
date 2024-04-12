@@ -18,7 +18,7 @@ For your convenience, we provide a distilled patch descriptor in the `models/tra
 ## Evaluation
 ### Prepare the data and off-the-shelf models
 #### Prepare the data
-Please follow the [IME](https://github.com/ufukefe/IME) to organize your dataset.
+Please follow the [IME](https://github.com/ufukefe/IME) using `hpatches_organizer.py` to organize your dataset.
 
 #### Prepare off-the-shelf models (optional)
 The off-the-shelf models used are listed below. **Note that these models are not required** if you only want to use the distilled patch descriptor along with the image classification or semantic segmentation models.  

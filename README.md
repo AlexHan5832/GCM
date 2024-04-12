@@ -55,9 +55,7 @@ GCM
 ├── configs
 ├── Datasets
 │   ├── hpatches
-│   ├── ~~hpatches-sequences-release~~
-│   ├── eval_hpatches.py
-│   └── ~~hpatches_organizer.py~~
+│   └── eval_hpatches.py
 ├── models
 │   ├── off-the-shelf
 │   │   ├── CREStereo

@@ -20,7 +20,7 @@ For your convenience, we provide a distilled patch descriptor in the `models/tra
 #### Prepare the data
 Please follow the [IME](https://github.com/ufukefe/IME) to organize your dataset.
 
-#### Prepare off-the-shelf models (**optional**)
+#### Prepare off-the-shelf models (optional)
 The off-the-shelf models used are listed below. **Note that these models are not required** if you only want to use the distilled patch descriptor along with the image classification or semantic segmentation models.  
 - [R2D2](https://github.com/naver/r2d2/tree/master/models)
 - [DeepPruner](https://github.com/uber-research/DeepPruner/tree/master/deeppruner#Weights)  

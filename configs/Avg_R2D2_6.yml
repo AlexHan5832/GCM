@@ -1,9 +1,9 @@
 ratio_th : [0.6, 1.0, 1.0, 1.0, 1.0, 1.0]
-fine_ratio : None
+fine_ratio :
 model : 'R2D2_STU'
-fine_model : None
+fine_model :
 up_sample : [16, 1]
 enable_two_stage : True
 bidirectional : True
 device : "cpu"
-output_directory : None
+output_directory :

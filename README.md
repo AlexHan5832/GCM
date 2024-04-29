@@ -1,6 +1,6 @@
 # GCM: Generalized Correspondence Matching via Flexible Hierarchical Refinement and Patch Descriptor Distillation
 Python (Pytorch) implementation of our [paper](https://arxiv.org/abs/2403.05388).
-<br>[Project Page](mias.group/GCM) | [Paper](https://arxiv.org/abs/2403.05388) | [Video]() <br/>
+<br>[Project Page]([https://mias.group/GCM/) | [Paper](https://arxiv.org/abs/2403.05388) | [Video]() <br/>
 
 
 ## Environment Setup

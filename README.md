@@ -99,7 +99,7 @@ python algorithm_wrapper.py --output_dir Results/hpatches/COARSEVGG19_dstlR2D2_9
 python algorithm_wrapper_util.py --config configs/VGG_dstlR2D2_6.yml --output_dir Results/hpatches/COARSEVGG19_dstlR2D2_6
 python algorithm_wrapper.py --output_dir Results/hpatches/COARSEVGG19_dstlR2D2_6
 
-python Datasets/eval_hpatches.py --algorithms COARSEVGG19_dstlR2D2_95, COARSEVGG19_dstlR2D2_6
+python Datasets/eval_hpatches.py --algorithms COARSEVGG19_dstlR2D2_95 COARSEVGG19_dstlR2D2_6
 ```
 
 ## Supported models

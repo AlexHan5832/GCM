@@ -88,7 +88,7 @@ python algorithm_wrapper.py --output_dir /path/to/output
 
 #### Evaluate results
 ```bash
-python Datasets/eval_hpatches.py --algorithms output1 output2, ...
+python Datasets/eval_hpatches.py --algorithms output1 output2 ...
 ```
 
 #### Example

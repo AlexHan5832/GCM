@@ -123,7 +123,7 @@ python Datasets/eval_hpatches.py --algorithms COARSEVGG19_dstlR2D2_95 COARSEVGG1
 You can use different backbone using the text listed above in the yaml file.
 
 
-## Train
+## Training
 We provide our network and loss function in `utils/train` folder.
 If you want to train a distilled patch descriptor, please clone the [R2D2 repository](https://github.com/naver/r2d2).
 Please replace `patchnet.py`, then add `dstltrain.py` and `distillation_feature_loss.py`.
